@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from travel_recommendation.views.district_api_view import DistrictAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("api/best-districts/", DistrictAPIView.as_view()),
 ]

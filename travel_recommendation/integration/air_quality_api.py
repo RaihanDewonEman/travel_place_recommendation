@@ -1,5 +1,5 @@
 import requests
-
+import datetime
 from travel_recommendation.config.constants import air_quality_api_endpoint, air_quality_api_domain_name
 
 class AirQualityAPI:
@@ -20,7 +20,9 @@ class AirQualityAPI:
             "latitude": kwargs["latitude"],
             "longitude": kwargs["longitude"],
             "hourly": "pm2_5",
-            "timezone": "auto"
+            "timezone": "auto",
+            "start_date": datetime.date.today(),
+            "end_date": datetime.date.today(),
         }
         response = requests.get(url, params=_params)
         return response.json()

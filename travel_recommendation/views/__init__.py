@@ -1,0 +1,1 @@
+from travel_recommendation.views.district_api_view import DistrictAPIView
