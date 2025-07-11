@@ -18,9 +18,11 @@ from django.contrib import admin
 from django.urls import path
 from travel_recommendation.views.district_api_view import DistrictAPIView
 from travel_recommendation.views.travel_recommendation_api_view import TravelRecommendationAPIView
+from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/best-districts/", DistrictAPIView.as_view()),
     path("api/travel-suggestion/", TravelRecommendationAPIView.as_view()),
+    path('api/token-auth/', obtain_auth_token),
 ]

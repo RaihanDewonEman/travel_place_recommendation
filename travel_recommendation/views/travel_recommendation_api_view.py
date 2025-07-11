@@ -6,6 +6,7 @@ from travel_recommendation.integration.weather_forecast_api import WeatherForeca
 
 
 class TravelRecommendationAPIView(APIView):
+
     def get(self, request):
         current_latitude = float(request.GET.get("current_latitude"))
         current_longitude = float(request.GET.get("current_longitude"))
