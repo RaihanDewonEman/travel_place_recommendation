@@ -4,3 +4,5 @@ venv/
 migrations
 static_media
 .env
+.idea
+.idea/
