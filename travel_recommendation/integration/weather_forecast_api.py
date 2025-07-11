@@ -7,7 +7,7 @@ class WeatherForecastAPI:
 
     @classmethod
     def prepare_get_api_url(cls, **kwargs):
-        _api_url =  "{api_domain_name}/{api_endpoint}".format(
+        _api_url = "{api_domain_name}/{api_endpoint}".format(
             api_domain_name=weather_api_domain_name,
             api_endpoint=weather_api_endpoint,
         )
@@ -17,11 +17,6 @@ class WeatherForecastAPI:
     @classmethod
     def get_weather_forecast_data(cls, **kwargs):
         url = cls.prepare_get_api_url(**kwargs)
-        _params = {
-            "latitude": kwargs["latitude"],
-            "longitude": kwargs["longitude"],
-            "hourly": "temperature_2m",
-            "timezone": "auto"
-        }
+        _params = kwargs["params"]
         response = requests.get(url, params=_params)
         return response.json()
