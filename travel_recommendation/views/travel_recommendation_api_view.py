@@ -8,10 +8,13 @@ from travel_recommendation.integration.weather_forecast_api import WeatherForeca
 class TravelRecommendationAPIView(APIView):
 
     def get(self, request):
-        current_latitude = float(request.GET.get("current_latitude"))
-        current_longitude = float(request.GET.get("current_longitude"))
-        destination_name = request.GET.get("destination")
-        travel_date = request.GET.get("travel_date")
+        try:
+            current_latitude = float(request.GET.get("current_latitude"))
+            current_longitude = float(request.GET.get("current_longitude"))
+            destination_name = request.GET.get("destination")
+            travel_date = request.GET.get("travel_date")
+        except Exception as e:
+            return Response({"error": "current_latitude, current_longitude, destination, travel_date are required parameters!!!"}, status=404)
 
         try:
             destination = District.objects.get(name__iexact=destination_name)
